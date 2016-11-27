@@ -141,6 +141,7 @@ in mind/mitigate as much as possible though)
 
 Some ideas for a framework are 
 [here](http://conferences.oreilly.com/strata/hadoop-big-data-ny/public/schedule/detail/51731)
+(also described [here](https://medium.com/@HarlanH/insights-from-a-predictive-model-pipeline-abstraction-c8b47fd406da))
 
 ML needs to be "sold" to the business side (management/business units in the application domain
 of each ML product)
