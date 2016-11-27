@@ -97,22 +97,63 @@ replicated here as well
 Scoring can be batch (easier, can read from database, score and write result to database) or
 real-time (the modern way to do it is via http REST API)
 
+Better if data science team owns this part as well (along with as much as possible of the lower
+part of the Figure above, possibly with some engineering support)
+
 
 
 ### Taking action
 
+The primary goal of an ML system in a company is to provide some business value
+(happy customers, $$$ etc.)
 
+Action probably must be owned by the engineering team (therefore "wall" moved around here?)
 
+Ability to test live/roll out gradually (A/B testing of models)
 
 
 
 ### Evaluate & monitor
 
+Models might behave differently in production vs train-test (non-stationarity, changed
+conditions, wrong assumptions, bugs etc.)
+
+Crucial to evaluate the models after deployment
+
+Evaluation based on ML metrics (distribution of scores etc.) and business metrics (impact of
+taking action)
+
+Evaluation after deployment and continuous monitoring subsequently (dashboards and alerts)
+(to detect if something external changes/breaks it, also models can slowly degrade in time)
+
+This too should be owned by the data science team (expertise to compare with the model
+developed offline)
+
+
+
+### Misc
+
+ML creates tight couplings that is considered evil from engineering perspective
+
+Some problems identified in [this paper](http://research.google.com/pubs/pub43146.html)
+although no silver bullet solutions exist at the moment (keep
+in mind/mitigate as much as possible though)
+
+Some ideas for a framework are 
+[here](http://conferences.oreilly.com/strata/hadoop-big-data-ny/public/schedule/detail/51731)
+
+ML needs to be "sold" to the business side (management/business units in the application domain
+of each ML product)
+
+Involving the business into its working and showing business inpact on a on-going basis 
+(reports, dashboards, alerts etc.) can help buy-in
+
 
 
 ### Learn & improve
 
-
+Iterate over all the components, learn from the experience of using it in practice (e.g. incorporate 
+ideas from business, add new features to FE, retrain models if performance degrade in time etc.)
 
 
 
