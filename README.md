@@ -48,7 +48,7 @@ The algos with best performance are usually: gradient boosting (GBM), random for
 neural networks (and deep learning), support vector machines (SVM)
 
 In certain cases (sparse data, model interpretability required) linear models must be
-used (e.g. logitic regression)
+used (e.g. logistic regression)
 
 There are good open source tools for all this (R packages, Python sklearn, xgboost, VW, H2O etc.)
 
@@ -58,7 +58,8 @@ Also need unbiased evaluation, see next point
 
 Models can be tuned by search in the hyperparameter space (grid or random search, Bayesian optimization methods etc.)
 
-Performance can be increased further by ensembling several models (averaging, stacking etc.)
+Performance can be often increased further by ensembling several models (averaging, stacking etc.), 
+but drawbacks/tradeoffs (increased complexity in deploying such models)
 
 
 
@@ -68,13 +69,13 @@ This is super-important, spend a lot of time here
 
 Unbiased evaluation with test set, cross validation (some algos have "early stoping" requiring a validation set)
 
-If you did hyperparameter tuning, that also needed a separate validation set
+If you did hyperparameter tuning, that also needed a separate validation set (or cross validation)
 
-The real world is non-stationary, also use a time gapped test set
+The real world is non-stationary, use a time gapped test set
 
 Diagnostics: distribution of probability scores, ROC curves etc.
 
-Also do evaluation using various business metrics (impact of model in business terms)
+Also do evaluation using relevant business metrics (impact of model in business terms)
 
 
 
@@ -85,19 +86,20 @@ Scoring of live data
 Considered usually an "engineering" task (thrown over a "wall" from data scientists to software engineers)
 
 Use same tool to deploy, do not rewrite in other "language" or tool (SQL, PMML, Java, C++, custom
-format such as JSON) (unless the export is done by the same tool/vendor doing the training)
+format such as JSON) (unless the export is done by the same tool/vendor doing the training) (high
+risk of subtle bugs in edge cases)
 
-Different servers (train require more CPU/RAM; score require low latency, high-availability, maybe
+Different servers (training requires more CPU/RAM; scoring requires low latency, high-availability, maybe
 scalability)
 
-Live data comes from different system, often FE needs to be replicated (approximately duplicate code is evil,
+Live data comes from a different system, often FE needs to be replicated (duplicate code is evil,
 but may be unavoidable); transformations/data cleaning already in the historical data might need to be
-replicated here as well
+duplicated here as well
 
-Scoring can be batch (easier, can read from database, score and write result to database) or
-real-time (the modern way to do it is via http REST API)
+Scoring can be batch (easier, can read from database, score and write results back to database) or
+real-time (the modern way to do it is via http REST API provinding a separation of concerns)
 
-Better if data science team owns this part as well (along with as much as possible of the lower
+Better IMO if data science team owns this part as well (along with as much as possible of the lower
 part of the Figure above, possibly with some engineering support)
 
 
@@ -144,11 +146,14 @@ Some ideas for a framework are
 (also described 
 [here](https://medium.com/@HarlanH/insights-from-a-predictive-model-pipeline-abstraction-c8b47fd406da))
 
+Example couplings: FE to data schemas (can change upstream), duplicated FE in scoring, 
+action taking couples with lots of engineering/business domain
+
 ML needs to be "sold" to the business side (management/business units in the application domain
 of each ML product)
 
-Involving the business into its working and showing business inpact on a on-going basis 
-(reports, dashboards, alerts etc.) can help buy-in
+Involving the business into ML's inner working and showing business inpact on a on-going basis 
+(reports, dashboards, alerts etc.) can help trust/buy-in
 
 
 
