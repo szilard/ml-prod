@@ -162,7 +162,7 @@ Involving the business into ML's inner working and showing business inpact on a 
 Iterate over all the components, learn from the experience of using it in practice (e.g. incorporate 
 ideas from business, add new features to FE, retrain models if performance degrade in time etc.)
 
-
-
+For iterations to be fast, as much of the above should use tools that facilitate automation/reproducibity
+(e.g. Rstudio+R-markdown/Jupyter notebooks, git, docker etc.)
 
 
