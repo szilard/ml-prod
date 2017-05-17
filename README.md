@@ -14,6 +14,8 @@ The following figure summarizes the components/processes involved:
 
 ![img](https://raw.githubusercontent.com/szilard/MLprod-1slide/master/MLprod-1slide.png)
 
+![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/80x15.png)
+
 
 
 ### Historical data
